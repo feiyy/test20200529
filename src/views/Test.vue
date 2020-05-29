@@ -1,5 +1,6 @@
 <template>
 	<div>
+		<chinamap></chinamap>
 		<div class="table">
 			<div class="t_header">
 				<div class="t_column">地区</div>
@@ -8,7 +9,7 @@
 				<div class="t_column">治愈</div>
 			</div>
 		
-		    <div v-for="(p,index) in newslist" :key="p.provinceShortName">
+		    <div v-for="(p,index) in displaylist" :key="p.provinceShortName">
 				 <div class="t_row">
 				 	<div class="t_column">{{p.provinceShortName}}</div>
 				 	<div class="t_column">{{p.confirmedCount}}</div>
@@ -30,16 +31,41 @@
 			</div>
 								
 		</div>
+		
+		 <div style="text-align: center;" @click="flag = !flag">{{message}}</div>
 	</div>
 </template>
 
 <script>
 	import axios from 'axios'
+	//import map from '../components/ChinaMap.vue'
+	import chinamap from '@/components/ChinaMap.vue'
 	
 	export default {
 		data(){
 			return {
+				message:'read more',
+				flag:false,//display 6 province
 				newslist:[]
+			}
+		},
+		components:{
+			chinamap
+		},
+		computed:{
+			displaylist()
+			{
+				if(!this.flag)
+				{
+					this.message = 'read more';
+					var temp = this.newslist.slice(0,6);				
+					return temp;
+				}
+				else
+				{
+					this.message ='read less';
+					return this.newslist;
+				}
 			}
 		},
 		created()
