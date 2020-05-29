@@ -18,6 +18,7 @@
 					{{p.curedCount}}
 					  <!-- <i v-if="!p.cityDisplayed" class="fa fa-caret-down" aria-hidden="true" style="font-size:30px;color:darkgray;"></i>
 					   <i v-else class="fa fa-caret-up" aria-hidden="true" style="font-size:30px;color:darkgray;"></i> -->
+					   <font-awesome-icon :icon="['fas','caret-down']" size="lg" />
 					</div>							
 				 </div>
 				<!-- <div class="cities" :class="{hidecity:!p.cityDisplayed}">
@@ -55,6 +56,7 @@
 		computed:{
 			displaylist()
 			{
+				console.log(this.flag);
 				if(!this.flag)
 				{
 					this.message = 'read more';
@@ -73,8 +75,11 @@
 			//send ajax request to virus data
 			axios.get('http://api.tianapi.com/txapi/ncovcity/index?key=229a8745b39d447b656d775df952443c')
 			.then(res => {
-				console.log(res);
+				//console.log(res);
+				
 				this.newslist = res.data.newslist;
+				
+				
 			})	
 		}
 	}
