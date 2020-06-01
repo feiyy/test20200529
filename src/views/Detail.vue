@@ -9,13 +9,13 @@
 		
 		created(){
 			//1. get router param
-			console.log(this.$route.params.id);
+			//console.log(this.$route.params.id);
 			//2. send ajax to get detail using aixos
 		}, 
 		watch:{
 			$route(to, from){
 				
-				console.log(this.$route.params.id);
+				//console.log(this.$route.params.id);
 				
 			}
 		}

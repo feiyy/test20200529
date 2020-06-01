@@ -4,6 +4,7 @@
 		<button type="button" @click="nav1">navigate1</button>
 	</div>
     <div id="nav">
+	  <router-link to="/login">Login</router-link> |
       <router-link to="/home">Home</router-link> |
       <router-link to="/about">About</router-link> |
 	  <router-link to="/test">Test</router-link>

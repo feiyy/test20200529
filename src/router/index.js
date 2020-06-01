@@ -16,6 +16,11 @@ Vue.use(VueRouter)
     component: Home
   },
   {
+    path: '/login',
+    name: 'Login',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue')
+  },
+  {
     path: '/about',
     name: 'About',
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
@@ -44,5 +49,24 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+
+//here define navigation guard
+router.beforeEach((to,from,next)=>{
+	
+	let username = sessionStorage.getItem('username');
+	
+	if(to.name != 'Login' && !username)
+	{
+		//redirect to login
+		next({name:'Login'});
+	}
+	else
+	{
+		next();
+	}
+	
+})
+
+
 
 export default router
