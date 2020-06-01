@@ -1,7 +1,10 @@
 <template>
   <div id="app">
+	<div>
+		<button type="button" @click="nav1">navigate1</button>
+	</div>
     <div id="nav">
-      <router-link to="/">Home</router-link> |
+      <router-link to="/home">Home</router-link> |
       <router-link to="/about">About</router-link> |
 	  <router-link to="/test">Test</router-link>
     </div>
@@ -11,6 +14,22 @@
     
   </div>
 </template>
+
+<script>
+	export default{
+		methods:{
+			nav1()
+			{
+				//this.$router.push('about');
+				//this.$router.push({path:'about'});
+				//this.$router.push({name:'About'});
+				//this.$router.push({name:'Detail',params:{id:200}});
+				//this.$router.push('/about/detail/100');
+				this.$router.push({'path':'/about',query:{id:888}});
+			}
+		}
+	}
+</script>
 
 <style lang="less">
 #app {
