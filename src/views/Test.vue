@@ -38,7 +38,7 @@
 </template>
 
 <script>
-	import axios from 'axios'
+	//import axios from 'axios'
 	//import map from '../components/ChinaMap.vue'
 	import chinamap from '@/components/ChinaMap.vue'
 	
@@ -73,7 +73,7 @@
 		created()
 		{
 			//send ajax request to virus data
-			axios.get('http://api.tianapi.com/txapi/ncovcity/index?key=229a8745b39d447b656d775df952443c')
+			this.$axios.get('http://api.tianapi.com/txapi/ncovcity/index?key=229a8745b39d447b656d775df952443c')
 			.then(res => {
 				//console.log(res);
 				
