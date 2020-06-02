@@ -2,6 +2,11 @@
   <div class="about">
     <div>
 		<div>{{count}}</div>
+		<ul>
+			<li v-for="item in todos">
+				{{item.done}}
+			</li>
+		</ul>
 		
 		{{$route.query.id}}
 		<router-link to="/about/detail/100">article A</router-link>
@@ -20,6 +25,10 @@
 			count()
 			{
 				return this.$store.state.count;
+			},
+			todos()
+			{
+				return this.$store.getters.doneToDos;
 			}
 		}
 		
